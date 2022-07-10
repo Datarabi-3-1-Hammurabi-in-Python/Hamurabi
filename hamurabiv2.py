@@ -4,8 +4,9 @@ import random
 
 class Hamurabiv2(object):
     def play_game(self):
+
+
         Hamurabiv2.introduction()
-        print("Let's play!")
 
         # Player Stats
         population = 100
@@ -31,13 +32,14 @@ class Hamurabiv2(object):
         # EOG Counter
         starved_folk_total = 0
 
+
         gameON = True
         while gameON == True:
             year += 1
             while True:
-                print("Are you looking to buy or sell land?")
+                print("\nAre you looking to buy or sell land?")
                 print(f"(You have {acresOfLand} acres of land available)")
-                print("(1) to buy, (2) to sell")
+                print("(1) to buy, (2) to sell, (3) skip")
                 try:
                     choice = int(input(">> "))
                     if choice == 1:
@@ -64,6 +66,8 @@ class Hamurabiv2(object):
                         acresOfLand -= acresToSell
                         bushels += (acresToSell * landValue)
                         print(f"you have {acresOfLand} acres of land now\n")
+                        break
+                    elif choice == 3:
                         break
                     else:
                         print("That's not an option\n")
@@ -121,6 +125,9 @@ class Hamurabiv2(object):
             if year == 10:
                 Hamurabiv2.final_result(starved_folk_total, acresOfLand, population)
                 gameON = False
+        Hamurabiv2.play_again()
+
+
 
     def introduction():
         print("Congratulations, you are the newest ruler of ancient Sumer, elected for a ten year term of office.\n"
@@ -133,7 +140,20 @@ class Hamurabiv2(object):
               "- The market price for land fluctuates yearly\n"
               "\n"
               "Rule wisely and you will be showered with appreciation at the end of your term.\n"
-              "Rule poorly and you will be kicked out of office!\n")
+              "Rule poorly and you will be kicked out of office!\n"
+              "\n"
+              "\n"
+              "O great Hammurabi!\n"
+              "You are in year 1 of your ten year rule.\n"
+              "In the previous year 0 people starved to death.\n"
+              "In the previous year 0 people entered the kingdom.\n"
+              "The population is now 100.\n"
+              "We harvested 3000 bushels at 3 bushels per acre.\n"
+              "Rats destroyed 200 bushels, leaving 2800 bushels in storage.\n"
+              "The city owns 1000 acres of land.\n"
+              "Land is currently worth 19 bushels per acre.\n"
+              "\n"
+              "Let's play!")
 
     def askHowManyAcresToBuy():  # needs a check against bushels, could push us negative
         while True:
@@ -270,7 +290,15 @@ class Hamurabiv2(object):
         else:
             print("Your reign has ended, may your next endeavors be more to your abilities.")
 
-
+    def play_again():
+        print("Would you like to play again? Enter Y or N")
+        response = input(">> ")
+        if response == 'Y':
+            Hamurabiv2().play_game()
+        if response == 'y':
+            Hamurabiv2().play_game()
+        else:
+            print("Thanks for playing!")
 
 if __name__ == '__main__':
     Hamurabiv2().play_game()
