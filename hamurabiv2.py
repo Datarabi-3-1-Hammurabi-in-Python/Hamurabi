@@ -41,7 +41,13 @@ class Hamurabiv2(object):
                 print(f"(You have {acresOfLand} acres of land available)")
                 print("(1) to buy, (2) to sell, (3) skip")
                 try:
-                    choice = int(input(">> "))
+                    choice = input(">> ")
+                    if choice == 'HELP':
+                        print("Well, it's almost like easy mode. Here's 1000 extra bushels.")
+                        bushels += 1000
+                        continue
+                    else:
+                        choice = int(choice)
                     if choice == 1:
                         acreBought = Hamurabiv2.askHowManyAcresToBuy()
                         while True:
@@ -69,9 +75,6 @@ class Hamurabiv2(object):
                         break
                     elif choice == 3:
                         break
-                    elif choice == 43117:
-                        bushels += 1000
-                        continue
                     else:
                         print("That's not an option\n")
                 except ValueError:
