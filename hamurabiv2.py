@@ -69,6 +69,9 @@ class Hamurabiv2(object):
                         break
                     elif choice == 3:
                         break
+                    elif choice == 43117:
+                        bushels += 1000
+                        continue
                     else:
                         print("That's not an option\n")
                 except ValueError:
